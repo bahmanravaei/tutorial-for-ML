@@ -1,7 +1,6 @@
 # Natural Language Processing
 
 # Importing the libraries
-import numpy as np
 import pandas as pd
 
 # Importing the dataset
@@ -25,7 +24,8 @@ for i in range(0, 1000):
   review = [ps.stem(word) for word in review if not word in set(all_stopwords)]
   review = ' '.join(review)
   corpus.append(review)
-print(corpus)
+
+#print(corpus)
 
 # Creating the Bag of Words model
 from sklearn.feature_extraction.text import CountVectorizer
@@ -44,10 +44,10 @@ classifier.fit(X_train, y_train)
 
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
-print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
+#print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
 
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix, accuracy_score
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
-accuracy_score(y_test, y_pred)
+print(accuracy_score(y_test, y_pred))
