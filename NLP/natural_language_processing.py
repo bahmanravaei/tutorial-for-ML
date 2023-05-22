@@ -13,14 +13,16 @@ nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 corpus = []
+ps = PorterStemmer()
+
+all_stopwords = stopwords.words('english')
+all_stopwords.remove('not')
+
 for i in range(0, 1000):
   review = re.sub('[^a-zA-Z]', ' ', dataset['Review'][i]) # Do not remove words which contain a-z and A-Z characters
                                                           # Remove other characters and replace them with Space -> ' '
   review = review.lower()
   review = review.split()
-  ps = PorterStemmer()
-  all_stopwords = stopwords.words('english')
-  all_stopwords.remove('not')
   review = [ps.stem(word) for word in review if not word in set(all_stopwords)]
   review = ' '.join(review)
   corpus.append(review)
