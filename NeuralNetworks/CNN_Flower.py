@@ -87,7 +87,7 @@ cnn.add(tf.keras.layers.Dense(units=len(train_ds.class_names), activation='sigmo
 cnn.compile(optimizer = 'adam', loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics = ['accuracy'])
 
 # Training the CNN on the Training set and evaluating it on the Test set
-cnn.fit(x = train_ds, validation_data = test_ds, epochs = 25)
+cnn.fit(x = train_ds, validation_data = test_ds, epochs = 3)
 
 # Part 4 - Making a single prediction
 
